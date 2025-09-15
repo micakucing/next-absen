@@ -3,12 +3,18 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_APP_ID
+  apiKey: "AIzaSyCxC8CeWWKxFdrBajdNN6yGaTGcjgXfqXo",
+
+  authDomain: "absensi-2d172.firebaseapp.com",
+
+  projectId: "absensi-2d172",
+
+  storageBucket: "absensi-2d172.firebasestorage.app",
+
+  messagingSenderId: "383881893743",
+
+  appId: "1:383881893743:web:20ee78f91e42ceeef37a9a"
+
 };
 
 const app = initializeApp(firebaseConfig);

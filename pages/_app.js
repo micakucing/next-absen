@@ -1,5 +1,10 @@
-import "@/styles/globals.css";
+// pages/_app.js
 
-export default function App({ Component, pageProps }) {
+import 'bootstrap/dist/css/bootstrap.min.css'; // Tambahkan baris ini
+import '../components/AdminLayout.module.css'; 
+
+function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
+
+export default MyApp;

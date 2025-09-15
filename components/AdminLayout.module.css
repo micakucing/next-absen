@@ -1,0 +1,50 @@
+/* components/AdminLayout.module.css */
+
+.adminLayout {
+  position: relative;
+  min-height: 100vh;
+}
+
+.sidebarWrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -250px; /* Sembunyikan sidebar di luar layar */
+  width: 250px;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  z-index: 1050; /* Pastikan di atas konten lain */
+}
+
+.sidebarVisible {
+  left: 0; /* Tampilkan sidebar */
+}
+
+.sidebarToggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1051;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+/* Aturan untuk Layar Desktop (lg dan di atasnya) */
+@media (min-width: 992px) {
+  .sidebarWrapper {
+    position: fixed; /* Hilangkan posisi fixed di desktop */
+    width: auto;
+    left: 0;
+  }
+  .contentWrapper {
+    margin-left: 250px; /* Beri ruang untuk sidebar tetap */
+  }
+}

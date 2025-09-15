@@ -50,7 +50,7 @@ const AdminLayout = ({ children }) => {
                             <Nav.Link href="/admin/report" className="text-white">Laporan Absensi</Nav.Link> {/* Tambahkan ini */}
                                           <Nav.Link href="/admin/payroll" className="text-white">payroll</Nav.Link>
 
-              <Nav.Link href="/rfid" className="text-white">Absensi RFID</Nav.Link>
+              <Nav.Link href="/" className="text-white">Absensi RFID</Nav.Link>
             </Nav>
             <div className="mt-auto pt-5">
               <Button variant="outline-light" onClick={handleLogout} className="w-100">

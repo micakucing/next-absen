@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebaseConfig';
-
+import Link from 'next/link'; // Import komponen Link
 const RFIDScannerPage = () => {
   const [rfidInput, setRfidInput] = useState('');
   const [message, setMessage] = useState(null);
@@ -83,6 +83,11 @@ const RFIDScannerPage = () => {
           <Button variant="primary" type="submit" className="w-100">
             Scan
           </Button>
+             <Link href="/admin" passHref>
+            <Button variant="outline-secondary" className="w-100 mt-3">
+              Ke Halaman Admin
+            </Button>
+          </Link>
         </Form>
       </div>
     </Container>

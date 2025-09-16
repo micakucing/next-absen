@@ -22,9 +22,9 @@ const AdminLayout = ({ children }) => {
   return (
     <div className={styles.adminLayout}>
       {/* Tombol Toggle untuk Mobile */}
-      <Button 
-        variant="primary" 
-        onClick={toggleSidebar} 
+      <Button
+        variant="primary"
+        onClick={toggleSidebar}
         className={`${styles.sidebarToggle} d-lg-none`}
       >
         ☰
@@ -33,13 +33,13 @@ const AdminLayout = ({ children }) => {
       {/* Overlay (Hanya muncul saat sidebar aktif di mobile) */}
       {showSidebar && <div className={styles.overlay} onClick={toggleSidebar}></div>}
 
-      <Container fluid>
+      <Container>
         <Row>
           {/* Sidebar */}
-          <Col 
-            xs={10} 
-            lg={2} 
-            className={`${styles.sidebarWrapper} ${showSidebar ? styles.sidebarVisible : ''} bg-dark text-white p-4`} 
+          <Col
+            xs={10}
+            lg={2}
+            className={`${styles.sidebarWrapper} ${showSidebar ? styles.sidebarVisible : ''} bg-dark text-white p-4`}
           >
             <h4 className="mb-4">Dashboard Admin</h4>
             <Nav className="flex-column">
@@ -47,9 +47,8 @@ const AdminLayout = ({ children }) => {
               <Nav.Link href="/admin/employees" className="text-white">Manajemen Karyawan</Nav.Link>
               <Nav.Link href="/admin/positions" className="text-white">Manajemen Jabatan</Nav.Link>
               <Nav.Link href="/admin/attendances" className="text-white">Daftar Absensi</Nav.Link>
-                            <Nav.Link href="/admin/report" className="text-white">Laporan Absensi</Nav.Link> {/* Tambahkan ini */}
-                                          <Nav.Link href="/admin/payroll" className="text-white">payroll</Nav.Link>
-
+              <Nav.Link href="/admin/report" className="text-white">Laporan Absensi</Nav.Link> {/* Tambahkan ini */}
+              <Nav.Link href="/admin/payroll" className="text-white">payroll</Nav.Link>
               <Nav.Link href="/" className="text-white">Absensi RFID</Nav.Link>
             </Nav>
             <div className="mt-auto pt-5">

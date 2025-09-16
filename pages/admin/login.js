@@ -73,9 +73,11 @@ const LoginPage = () => {
   return (
     <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
       <div className="p-4 border rounded" style={{ width: '100%', maxWidth: '400px' }}>
-        <h2 className="text-center mb-4">Login</h2>
+        <h2 className="text-center mb-4">Login Admin</h2>
+                <p className="text-muted text-center">Kelola data absensi di dashboard admin.</p>
+
         {error && <Alert variant="danger">{error}</Alert>}
-        
+        <hr></hr>
         <Form onSubmit={handleLogin}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>

@@ -17,7 +17,8 @@ const AddEditEmployeePage = () => {
   const [email, setEmail] = useState('');
   const [position, setPosition] = useState('');
   const [rfidUid, setRfidUid] = useState('');
-  const [salary, setSalary] = useState(''); // Tambahkan state untuk gaji
+  const [salary, setSalary] = useState('');
+  const [hireDate, setHireDate] = useState(''); // Tambahkan state untuk tanggal mulai bekerja
   const [positions, setPositions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
@@ -43,7 +44,8 @@ const AddEditEmployeePage = () => {
             setEmail(data.email);
             setPosition(data.position);
             setRfidUid(data.rfidUid);
-            setSalary(data.salary); // Set state gaji
+            setSalary(data.salary);
+            setHireDate(data.hireDate); // Set state tanggal mulai bekerja
           } else {
             setMessage("Data karyawan tidak ditemukan.");
             setMessageType("warning");
@@ -66,7 +68,7 @@ const AddEditEmployeePage = () => {
     setMessage(null);
 
     // Validasi form
-    if (!name || !email || !position || !rfidUid || !salary) {
+    if (!name || !email || !position || !rfidUid || !salary || !hireDate) {
       setMessage("Semua field harus diisi.");
       setMessageType("danger");
       setLoading(false);
@@ -78,26 +80,25 @@ const AddEditEmployeePage = () => {
       email,
       position,
       rfidUid,
-      salary: parseInt(salary), // Simpan gaji sebagai angka
+      salary: parseInt(salary),
+      hireDate: hireDate // Simpan tanggal mulai bekerja
     };
 
     try {
       if (isEditing) {
-        // Mode Edit
         await updateDoc(doc(db, "employees", id), employeeData);
         setMessage("Data karyawan berhasil diperbarui!");
         setMessageType("success");
       } else {
-        // Mode Tambah
         await addDoc(collection(db, "employees"), employeeData);
         setMessage("Karyawan baru berhasil ditambahkan!");
         setMessageType("success");
-        // Reset form setelah berhasil
         setName('');
         setEmail('');
         setPosition('');
         setRfidUid('');
         setSalary('');
+        setHireDate(''); // Reset input
       }
     } catch (error) {
       console.error("Error saving employee: ", error);
@@ -122,61 +123,35 @@ const AddEditEmployeePage = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label>Nama Lengkap</Form.Label>
-              <Form.Control 
-                type="text" 
-                placeholder="Masukkan nama lengkap" 
-                value={name} 
-                onChange={(e) => setName(e.target.value)} 
-                required 
-              />
+              <Form.Control type="text" placeholder="Masukkan nama lengkap" value={name} onChange={(e) => setName(e.target.value)} required />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Email</Form.Label>
-              <Form.Control 
-                type="email" 
-                placeholder="Masukkan email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required 
-              />
+              <Form.Control type="email" placeholder="Masukkan email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Gaji Pokok</Form.Label>
-              <Form.Control 
-                type="number"
-                placeholder="Masukkan gaji pokok"
-                value={salary}
-                onChange={(e) => setSalary(e.target.value)}
-                required
-              />
+              <Form.Control type="number" placeholder="Masukkan gaji pokok" value={salary} onChange={(e) => setSalary(e.target.value)} required />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Tanggal Mulai Bekerja</Form.Label>
+              <Form.Control type="date" value={hireDate} onChange={(e) => setHireDate(e.target.value)} required />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Jabatan</Form.Label>
-              <Form.Control 
-                as="select" 
-                value={position} 
-                onChange={(e) => setPosition(e.target.value)} 
-                required
-              >
+              <Form.Control as="select" value={position} onChange={(e) => setPosition(e.target.value)} required>
                 <option value="">Pilih Jabatan</option>
-                {positions.map(pos => (
-                  <option key={pos.id} value={pos.name}>{pos.name}</option>
-                ))}
+                {positions.map(pos => (<option key={pos.id} value={pos.name}>{pos.name}</option>))}
               </Form.Control>
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>UID RFID</Form.Label>
-              <Form.Control 
-                type="text" 
-                placeholder="Masukkan UID RFID" 
-                value={rfidUid} 
-                onChange={(e) => setRfidUid(e.target.value)} 
-                required 
-              />
+              <Form.Control type="text" placeholder="Masukkan UID RFID" value={rfidUid} onChange={(e) => setRfidUid(e.target.value)} required />
             </Form.Group>
 
             <Button variant="primary" type="submit" className="w-100" disabled={loading}>

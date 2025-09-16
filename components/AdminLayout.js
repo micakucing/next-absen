@@ -48,7 +48,9 @@ const AdminLayout = ({ children }) => {
               <Nav.Link href="/admin/positions" className="text-white">Manajemen Jabatan</Nav.Link>
               <Nav.Link href="/admin/attendances" className="text-white">Daftar Absensi</Nav.Link>
               <Nav.Link href="/admin/report" className="text-white">Laporan Absensi</Nav.Link> {/* Tambahkan ini */}
-              <Nav.Link href="/admin/payroll" className="text-white">payroll</Nav.Link>
+              <Nav.Link href="/admin/employees/tenure" className="text-white">Tenure</Nav.Link>
+
+              <Nav.Link href="/admin/payroll" className="text-white">Payroll</Nav.Link>
               <Nav.Link href="/" className="text-white">Absensi RFID</Nav.Link>
             </Nav>
             <div className="mt-auto pt-5">

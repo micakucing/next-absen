@@ -64,7 +64,7 @@ const RFIDScannerPage = () => {
   return (
     <Container className="mt-5 d-flex justify-content-center">
       <div className="text-center" style={{ maxWidth: '500px' }}>
-        <h2 className="mb-4">Absensi Karyawan</h2>
+        <h2 className="mb-4">Absensi RFID</h2>
         <p className="text-muted">Tempelkan kartu RFID Anda untuk absensi.</p>
         
         {message && <Alert variant={messageType}>{message}</Alert>}
